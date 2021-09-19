@@ -1,11 +1,13 @@
-## - Images from Application 
+## Images from Application 
 
-## when everything is alright
+# Heroku
+This app deployed by Heroku; therefore, you can inspect the app from this link : https://forms-and-validation-angular.herokuapp.com
+
+## When everything is alright
 ![app1](https://user-images.githubusercontent.com/65118839/123696896-22833580-d811-11eb-8479-c0768f7cdd9e.PNG)
 
-## something seems wrong...
+## Something seems wrong...
 ![app2](https://user-images.githubusercontent.com/65118839/123697146-6aa25800-d811-11eb-8750-da68a9bcdbcd.PNG)
-
 
 # Forms
 
