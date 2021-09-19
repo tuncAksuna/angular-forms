@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static('./dist/forms'));
+app.use(express.static('./dist/Forms'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', { root: 'dist/forms/' }),
+    res.sendFile('index.html', { root: 'dist/Forms/' }),
 );
 
 app.listen(process.env.PORT || 8080);
