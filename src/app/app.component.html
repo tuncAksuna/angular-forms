@@ -1,0 +1,60 @@
+<div class="container my-5">
+    <h1 class="display-4 mb-3">Reactive Forms APP and Validators</h1>
+    <hr>
+    <form [formGroup]="profileFormInfos">
+        <div class="form-group ">
+            <label for=" ">Name</label>
+            <input type="text " class="form-control" placeholder="Enter your name" #firstNameArea formControlName="name" required>
+            <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+                <span *ngIf="name?.errors.required">Name is required</span>
+                <span *ngIf="name?.errors.maxlength">The name must be {{ name.errors.maxlength.requiredLength }} characters</span>
+                <span *ngIf="name?.errors.minlength">The name must be {{ name.errors.minlength.requiredLength }} characters</span>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for=" ">Surname</label>
+            <input type="text " class="form-control " placeholder="Enter your surname " #surNameArea formControlName="surName" required>
+            <div class="alert alert-danger" *ngIf="surName.touched && surName.invalid">
+                <span *ngIf="surName?.errors.required">Surname is required</span>
+                <span *ngIf="surName?.errors.minlength">The surname must be {{ surName.errors.minlength.requiredLength }} characters</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label>Age</label>
+            <input type="number" class="form-control " placeholder="Enter your age " #ageInput formControlName="age" required>
+            <div class="alert alert-danger" *ngIf="age.touched && !age.valid">
+                <span *ngIf="age?.errors.required">Age is required</span>
+                <span *ngIf="age?.errors.min">Age must be greater than zero </span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label>Email</label>
+            <input type="email" class="form-control " placeholder="Enter your email " #emailInput formControlName="email" required>
+            <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                <span *ngIf="email.errors.required ">E-mail is required</span>
+                <span *ngIf="email.errors.email ">Invalid E-mail format</span>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin:35px 0 0 3px;">
+            <input type='file' (change)="onSelectFile($event)" #imageURLInput formControlName="imageUrl" required>
+            <div class="alert alert-danger" *ngIf="imageUrl.touched && !imageUrl.valid" style="margin-top:10px">
+                <span *ngIf="imageUrl.errors.wrongExtension">- Wrong extension (type of must be : .jpg .png .svc .jpeg)</span>
+            </div>
+            <br>
+            <img [src]="urlOfImage" height="200" style="margin-top: 24px; border: 2px solid gray;">
+        </div>
+        <hr>
+        <button (click)="printAllValues([firstNameArea.value,surNameArea.value,ageInput.value,emailInput.value,imageURLInput.value])" [disabled]="profileFormInfos.invalid" class="btn btn-success btn-sm float-right mr-2">Validate User</button>
+
+        <blockquote class="blockquote">
+            <p class="lead"><em> Name : </em>{{name.value}}</p>
+            <p class="lead"><em>Surname : </em> {{surNameArea.value}}</p>
+            <p class="lead"><em>Surname : </em> {{ageInput.value}}</p>
+            <p class="lead"><em>E-mail : </em> {{emailInput.value}}</p>
+            <p class="lead"><em>Image URL : </em> {{imageURLInput.value}}</p>
+        </blockquote>
+        <hr>
+    </form>
+</div>
